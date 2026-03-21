@@ -32,7 +32,7 @@ public class Averages
 		int totalOdd = 0;
 		int countOdd = 0;
 		
-		for(int i=0;i<10;i++){
+		for(int i = 0;i < 10;i++){
 			System.out.print("Enter an integer value: ");
 			n = scan.nextInt();
 			if(n % 2 == 0){
