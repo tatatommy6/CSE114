@@ -45,8 +45,21 @@ public class Averages
 			}
 		}
 
-		System.out.printf("The average of the even numbers is :%.2f\n", (double)totalEven/countEven);
-		System.out.printf("The average of the odd numbers is %.2f\n",(double)totalOdd/countOdd);
+		// even numbers
+		if(countEven > 0){
+			System.out.printf("The average of the even numbers is :%.2f\n", (double)totalEven/countEven);
+		}
+		else{
+			System.out.println("There were no even numbers.");
+		}
+		
+		// odd numbers
+		if(countOdd > 0){
+			System.out.printf("The average of the odd numbers is %.2f\n",(double)totalOdd/countOdd);
+		}
+		else{
+			System.out.println("There were no odd numbers.");
+		}
 		scan.close();
 	}
 }		
