@@ -1,34 +1,33 @@
 package Assignment2;
 import java.util.Scanner;
+
 public class Vowels {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+
         System.out.println("Enter text, type <ctrl>+d to exit:");
-        
+
         while (true) {
-            if (!s.hasNextLine()) break; // stop when user presses Ctrl+D
-            
-            String line = s.nextLine(); // read a line of input
-            String result = ""; // text without vowels
-            int index = 0;
+            if (!s.hasNextLine()) break;
 
-            // check each character one by one
-            while (index < line.length()) {
-                char ch = line.charAt(index);
-                boolean isVowel = false;
+            String line = s.nextLine();
+            StringBuilder result = new StringBuilder();
 
-                // check if the character is a vowel (case-insensitive)
-                if (ch == 'a' || ch == 'A') isVowel = true;
-                else if (ch == 'e' || ch == 'E') isVowel = true;
-                else if (ch == 'i' || ch == 'I') isVowel = true;
-                else if (ch == 'o' || ch == 'O') isVowel = true;
-                else if (ch == 'u' || ch == 'U') isVowel = true;
+            for (int i = 0; i < line.length(); i++) {
+                char ch = line.charAt(i);
 
-                if (!isVowel) result += ch; // add non-vowel character to result
-                
-                index += 1; // move to the next character
+                if (!(ch == 'a' || ch == 'A' ||
+                    ch == 'e' || ch == 'E' ||
+                    ch == 'i' || ch == 'I' ||
+                    ch == 'o' || ch == 'O' ||
+                    ch == 'u' || ch == 'U')) {
+                    result.append(ch);
+                }
             }
-            System.out.println(result);
+
+            String output = result.toString().replaceAll("\\s+", " ").trim();
+
+            System.out.println(output);
         }
 
         s.close();

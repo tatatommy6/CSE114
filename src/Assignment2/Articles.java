@@ -4,18 +4,15 @@ import java.util.Scanner;
 public class Articles {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-
         System.out.println("Enter text, type <ctrl>+d to exit:");
 
         while (true) {
             if (!s.hasNextLine()) break;
 
             String line = s.nextLine();
-
             String[] words = line.split(" ");
             StringBuilder result = new StringBuilder();
 
-            // 일반 for문 (i 사용)
             for (int i = 0; i < words.length; i++) {
                 String word = words[i];
                 String lower = word.toLowerCase();
@@ -27,8 +24,7 @@ public class Articles {
                     result.append(word);
                 }
             }
-
-            System.out.println(result.toString());
+            System.out.println(result);
         }
 
         s.close();
