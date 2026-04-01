@@ -9,7 +9,6 @@ public class CommandLine
 {
     public static void main(String[] args) 
 	{
-		int i;
 		System.out.print("Command line: ");
 		for (String s:args)
 			System.out.print(s + " ");

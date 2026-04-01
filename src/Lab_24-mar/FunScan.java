@@ -15,7 +15,7 @@ public class FunScan
 		
 		while (true){
 			System.out.print("Enter a line of anything: ");
-			if (!scan.hasNextLine()) break;
+			if (!scan.hasNextLine()) break; // EOF
 			input = scan.nextLine();
 			
 			String[] tokens = input.split(" ");
