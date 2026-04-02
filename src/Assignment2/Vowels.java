@@ -3,19 +3,25 @@ import java.util.Scanner;
 
 public class Vowels {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in); // declare a scanner to read input
 
         System.out.println("Enter text, type <ctrl>+d to exit:");
 
         while (true) {
-            if (!s.hasNextLine()) break;
+            if (!s.hasNextLine()) break; //EOF
 
-            String line = s.nextLine();
+            String line = s.nextLine(); // input line from user
+
+            // String is immutable, so we use StringBuilder to build the result.
+            // But StringBuilder is mutable, so we can append characters easily.
+            // When we use String, we have to create a new string every time when we append a character.
+            // Which is inefficient and slows down the program at runtime.
             StringBuilder result = new StringBuilder();
 
             for (int i = 0; i < line.length(); i++) {
                 char ch = line.charAt(i);
 
+                // If the character is not a vowel, we append it to the result.
                 if (!(ch == 'a' || ch == 'A' ||
                     ch == 'e' || ch == 'E' ||
                     ch == 'i' || ch == 'I' ||
@@ -24,8 +30,9 @@ public class Vowels {
                     result.append(ch);
                 }
             }
-
-            String output = result.toString().replaceAll("\\s+", " ").trim();
+            // We use .replaceAll() to replace multiple spaces with a single space
+            // And we use .trim() to remove leading and trailing spaces.
+            String output = result.toString().replaceAll(" ", " ").trim();
 
             System.out.println(output);
         }
