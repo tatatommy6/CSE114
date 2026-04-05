@@ -1,10 +1,9 @@
-package Assignment2;
 import java.util.Scanner;
 
 public class Articles {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in); //declare scanner to read user input
-        System.out.println("Enter text, type <ctrl>+d to exit:");
+        System.out.print("Enter text, type <ctrl>+d to exit:");
 
         while (true) {
             if (!s.hasNextLine()) break; //EOF 

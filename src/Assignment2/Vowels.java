@@ -1,11 +1,10 @@
-package Assignment2;
 import java.util.Scanner;
 
 public class Vowels {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in); // declare a scanner to read input
 
-        System.out.println("Enter text, type <ctrl>+d to exit:");
+        System.out.print("Enter text, type <ctrl>+d to exit:");
 
         while (true) {
             if (!s.hasNextLine()) break; //EOF
