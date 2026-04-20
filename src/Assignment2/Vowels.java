@@ -30,12 +30,12 @@ public class Vowels {
                 }
             }
             // We use .replaceAll() to replace multiple spaces with a single space
-            // And we use .trim() to remove leading and trailing spaces.
-            String output = result.toString().replaceAll(" ", " ").trim();
+            // And we use .trim() to remove leading and trailing spaces. (whitespace)
+            String output = result.toString().replaceAll(" ", " ").trim(); // this line is error. It replaces " " to " " so it does nothing
+            // the correct line should be ~.replaceAll(" +", " ").trim();
 
             System.out.println(output);
         }
-
         s.close();
     }
 }

@@ -30,3 +30,46 @@ public class Articles {
         s.close();
     }
 }
+
+
+
+
+// public class Articles {
+//     public static void main(String[] args) {
+//         Scanner s = new Scanner(System.in);
+//         System.out.print("Enter text, type <ctrl>+d to exit:");
+
+//         while (s.hasNextLine()) {
+//             String line = s.nextLine();
+//             String result = "";
+
+//             int start = 0;
+
+//             while (start < line.length()) {
+//                 int spaceIndex = line.indexOf(" ", start);
+
+//                 String word;
+//                 if (spaceIndex == -1) {
+//                     word = line.substring(start);
+//                     start = line.length();
+//                 } else {
+//                     word = line.substring(start, spaceIndex);
+//                     start = spaceIndex + 1;
+//                 }
+
+//                 String lower = word.toLowerCase();
+
+//                 if (!lower.equals("a") && !lower.equals("an") && !lower.equals("the")) {
+//                     if (!result.equals("")) {
+//                         result = result + " ";
+//                     }
+//                     result = result + word;
+//                 }
+//             }
+
+//             System.out.println(result);
+//         }
+
+//         s.close();
+//     }
+// }
