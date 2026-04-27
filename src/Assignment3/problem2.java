@@ -1,5 +1,4 @@
-package Assignment3;
-//Minkyeol Kim
+// Minkyeol Kim
 
 public class problem2 { 
     /* 

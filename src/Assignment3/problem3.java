@@ -1,8 +1,10 @@
-package Assignment3;
-//Minkyeol kim
+// Minkyeol kim
 
 public class problem3 {
     public static long expon(long base, long exp){
+        // The reason using long type instead of int type is that the result of 
+        // base^exp can be very large, especially when exp is large.
+
         // Base case
         // Any number raised to the power if 0 is 1.
         if(exp == 0){
@@ -10,6 +12,8 @@ public class problem3 {
         }
         // Recursive
         // Compute base^(exp / 2) first and store it to avoid duplicate computation.
+
+        // So i used long type for half because the result of base^(exp/2) can also be very large.
         long half = expon(base, exp / 2);
         
         // if exponent is even:

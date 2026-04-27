@@ -1,6 +1,5 @@
-package Assignment3;
 import java.util.Scanner;
-//Minkyeol Kim
+// Minkyeol Kim
 
 public class problem1{
     /* 
