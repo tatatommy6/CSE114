@@ -1,15 +1,17 @@
 package Assignment3;
 //Minkyeol kim
+
 public class problem3 {
     public static long expon(long base, long exp){
-        // Base ase
-        // Any number raised to the poweer if 0 is 1.
+        // Base case
+        // Any number raised to the power if 0 is 1.
         if(exp == 0){
             return 1;
         }
-        // recursive
+        // Recursive
         // Compute base^(exp / 2) first and store it to avoid duplicate computation.
         long half = expon(base, exp / 2);
+        
         // if exponent is even:
         // base^exp = (base^(exp/2))^2
         if(exp % 2 == 0){
