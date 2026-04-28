@@ -2,25 +2,35 @@ import java.util.Scanner;
 // Minkyeol Kim
 
 public class problem1{
+
     /* 
     function: reverseString 
     Returns the reverse of its argument s. 
     Example: reverse("pigs") returns "sgip". 
     */ 
     public static String reverseString(String s) {
-        // Base case
-        // If the string is empty or has only one character, return it as is
-        if(s.length() <= 1){
-            return s;
-        }
-        // Recursive
-        // Take the first character and append it to the reverse of the rest of the string
-        // For example, if s is "pigs", it will take 'p' and append it to the reverse of "igs"
-        // reverseString("igs") will return "sgi", and then we append 'p' to get "sgip"
-        // This process continues until we reach the base case
-        return reverseString(s.substring(1)) + s.charAt(0);
-        
+        // Start recursion from the last index of the string
+        return reverseHelper(s, s.length() - 1);
     }
+    // Helper function to handle recursion using index
+    public static String reverseHelper(String s, int index) {
+        // Base case
+        // If index is less than 0, we have processed all characters
+        if(index < 0){
+            return "";
+        }
+
+        // Recursive
+        // Take the current character at index
+        // and append the result of reversing the rest (moving left)
+        // Example: "pigs"
+        // index = 3 -> 's'
+        // index = 2 -> 'g'
+        // index = 1 -> 'i'
+        // index = 0 -> 'p'
+        return s.charAt(index) + reverseHelper(s, index - 1);
+    }
+
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.print("Enter a string to reverse: ");
