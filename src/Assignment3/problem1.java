@@ -23,11 +23,6 @@ public class problem1{
         // Recursive
         // Take the current character at index
         // and append the result of reversing the rest (moving left)
-        // Example: "pigs"
-        // index = 3 -> 's'
-        // index = 2 -> 'g'
-        // index = 1 -> 'i'
-        // index = 0 -> 'p'
         return s.charAt(index) + reverseHelper(s, index - 1);
     }
 

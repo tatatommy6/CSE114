@@ -4,24 +4,22 @@
 	Illustrate Java memory model
  */
 
-public class Memory 
-{
+public class Memory {
     /* 
 		static variables created before main() called,
 		exist no matter what function is called
      */
+	// These two variables are allocated from the heap(method area) and will exist unitll the program ends.
     public static int balance = 0;
     
 	public static String msg;
 	
-    public static void deposit (int amount) 
-    {
-		balance = balance + amount;
+    public static void deposit (int amount) {
+		balance += amount;
     }
 
-    public static void withdraw (int amount) 
-    {
-		balance = balance - amount;
+    public static void withdraw (int amount) {
+		balance -= amount;
     }
 
 	/*
@@ -35,14 +33,13 @@ public class Memory
 		Even though the variable s is destroyed when this function returns,
 		its value has been preserved.
 	 */
-	public static String makeMsg()
-	{
+	public static String makeMsg() {
+		// Creates a new String object on the heap and assigns its reference to the local variable s
 		String s = new String("I bring peace to all mankind.");
 		return s;
 	}
 	
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
 		System.out.println("Initial balance: " + balance);
 		deposit(100);
 		System.out.println("After deposit of 100: " + balance);

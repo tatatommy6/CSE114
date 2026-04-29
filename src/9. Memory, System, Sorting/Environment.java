@@ -9,10 +9,8 @@
 import java.util.Map;
 import java.util.Set;
 
-public class Environment
-{
-    public static void main (String[] args) 
-    {
+public class Environment {
+    public static void main (String[] args) {
 		/*
 			getenv returns a Map containing the runtime
 			environment. A Map is a set of
