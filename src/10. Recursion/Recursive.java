@@ -6,16 +6,16 @@
 
 // import java.util.Scanner;
 
-public class Recursive
-{
+// 여러가지 함수(제곱, 팩토리얼, 선형탐색, 이진탐색)를 재귀방식으로 구현한 클래스
+public class Recursive {
 
 	/*
 		Function: expon
 		Returns: base to the power exp.
 		exp must be non-negative.
 	 */
-	public static long expon(long base, long exp)
-	{
+	// 제곱 계산 함수 
+	public static long expon(long base, long exp) {
 		if (exp == 0) return 1;
 		else return (base * expon(base, exp-1));
 	}
@@ -25,8 +25,8 @@ public class Recursive
 		Returns: n!
 		n must be non-negative.
 	 */
-	public static long fact(int n)
-	{
+	// 팩토리얼 함수 (값이 튈 수 있으므로 long 타입으로 함수 선언)
+	public static long fact(int n) {
 		if (n == 0) return 1;
 		else return (n * fact(n-1));
 	}
@@ -37,11 +37,10 @@ public class Recursive
 			range a[low] ... a[high].
 		low must be <= high.
 	 */
-	public static int findmax(int a[], int low, int high)
-	{
+	// 배열에서 최대값 찾는 함수
+	public static int findmax(int a[], int low, int high) {
 		if (low == high) return a[low];
-		else
-		{
+		else {
 			int maxrest = findmax(a, low+1, high);
 			if (maxrest > a[low]) return maxrest;
 			else return a[low];
@@ -54,8 +53,8 @@ public class Recursive
 	 * If not found, return -1.
 	 * low must be <= high.
 	 */
-	public static int lookup(int a[], int low, int high, int value)
-	{
+	// 배열에서 특정 값 찾는 함수 (선형 탐색)
+	public static int lookup(int a[], int low, int high, int value) {
 		if (a[low] == value) return low;
 		else if (low == high) return -1;
 		else return lookup(a, low+1, high, value);			
@@ -68,8 +67,8 @@ public class Recursive
 	 * low must be <= high.
 	 * The array must be sorted.
 	 */
-	public static int binarySearch(int a[], int low, int high, int value)
-	{
+	// 배열에서 특정 값 찾는 함수 (이진 탐색)
+	public static int binarySearch(int a[], int low, int high, int value) {
 		if (low > high) return -1; 		// empty range!
 		int middle = (low + high) / 2;
 		if (a[middle] == value) return middle;
@@ -78,17 +77,15 @@ public class Recursive
 		else return binarySearch(a, low, middle-1, value);
 	}
 
-    public static void main (String[] args) 
-    {
-    	int [] vals = { 0, 1, 5, 10};
-    	long [] facts = { 1, 1, 120, 3628800};
+    public static void main (String[] args) {
+		int [] vals = { 0, 1, 5, 10};
+		long [] facts = { 1, 1, 120, 3628800};
 		boolean failures = false;
 		int i;
-		for (i = 0; i < vals.length; i++)
-		{
+		// 팩토리얼 부분
+		for (i = 0; i < vals.length; i++) {
 			long result = fact(vals[i]);
-			if (result != facts[i])
-			{
+			if (result != facts[i]) {
 				failures = true;
 				System.out.println(vals[i] +	
 					"! returned " + result + ", expected " + facts[i]);
@@ -101,12 +98,11 @@ public class Recursive
 		long [] exps = {3, 0, 4, 99};
 		long [] pows = {8, 1, 81, 0};
 		
+		// 제곱 계산 부분
 		failures = false;
-		for (i = 0; i < vals.length; i++)
-		{
+		for (i = 0; i < vals.length; i++) {
 			long result = expon(bases[i], exps[i]);
-			if (result != pows[i])
-			{
+			if (result != pows[i]) {
 				failures = true;
 				System.out.println("expon(" + bases[i] + ", " + exps[i] +	
 					") returned " + result + ", expected " + pows[i]);
@@ -117,17 +113,16 @@ public class Recursive
 			
 		int a1[] = { 5 };
 		int a2[] = { 5, 9, 4, 14, 50 };
-		
+
+		// 최대값 계산 부분
 		failures = false;
 		int m = findmax(a1, 0, 0);
-		if (m != 5)
-		{
+		if (m != 5) {
 			failures = true;
 			System.out.println("findmax error a1, should be 5, was " + m);
 		}
 		m = findmax(a2, 0, 4);
-		if (m != 50)
-		{
+		if (m != 50) {
 			failures = true;
 			System.out.println("findmax error a2, should be 50, was " + m);
 		}
@@ -137,12 +132,12 @@ public class Recursive
 
 		int [] look = { 99, 5, 50, 4, -3 };
 		int [] lookres = { -1, 0, 4, 2, -1};
+
+		// 선형 탐색 부분
 		failures = false;
-		for (i = 0; i < look.length; i++)
-		{
+		for (i = 0; i < look.length; i++) {
 			int result = lookup(a2, 0, a2.length-1, look[i]);
-			if (result != lookres[i])
-			{
+			if (result != lookres[i]) {
 				failures = true;
 				System.out.println("lookup(" + look[i] +	
 					") returned " + result + ", expected " + lookres[i]);
@@ -155,11 +150,11 @@ public class Recursive
 		int [] searches = { 0, 4, 3, 20};
 		int [] expected = { 0, -1, 1, 5};
 		failures = false;
-		for (i = 0; i < searches.length; i++)
-		{
+
+		// 이진 탐색 부분
+		for (i = 0; i < searches.length; i++) {
 			int result = binarySearch(a3, 0, a3.length-1, searches[i]);
-			if (result != expected[i])
-			{
+			if (result != expected[i]) {
 				failures = true;
 				System.out.println("Error: binary search for " + searches[i] +	
 					" returned " + result + ", expected " + expected[i]);
