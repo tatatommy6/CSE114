@@ -4,10 +4,8 @@
 	Use Rational class
  */
 
-public class UseRat
-{
-	public static void main(String args[])
-	{
+public class UseRat {
+	public static void main(String args[]) {
 		Rational zero = new Rational();		// 0
 		Rational five = new Rational(5);		// 5/1
 		Rational sixeight = new Rational(6, 8);	// 3/4

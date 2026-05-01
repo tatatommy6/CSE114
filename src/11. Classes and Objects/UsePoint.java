@@ -4,10 +4,8 @@
  * Use Point
  */
 
-public class UsePoint
-{
-	public static void main(String args[])
-	{
+public class UsePoint{
+	public static void main(String args[]) {
 		Point p = new Point(3, 4);
 		System.out.println("The point is " + p);
 		System.out.println("Distance from origin: " + p.distanceFromOrigin());

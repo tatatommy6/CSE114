@@ -5,14 +5,12 @@
  * Example of Simple Class
  */
 
-public class Point
-{
+public class Point {
 	private final double x;		// point's x coordinate
 	private final double y;		// point's y coordinate
 
 	/* construct Point with given x, y coordinates */
-	public Point(double xval, double yval) 
-	{
+	public Point(double xval, double yval) {
 		x = xval;
 		y = yval;
 	}
@@ -23,13 +21,11 @@ public class Point
 	/* return y coordinate of Point */
 	public final double getY() { return y; }
 
-	public final double distanceFromOrigin()
-	{
+	public final double distanceFromOrigin(){
 		return Math.sqrt(x*x + y*y);
 	}
 	
-	public final double distanceFrom(Point p)
-	{
+	public final double distanceFrom(Point p) {
 		double xdelta = p.x-x;
 		double ydelta = p.y-y;
 		return Math.sqrt(xdelta*xdelta + ydelta*ydelta);
@@ -42,10 +38,9 @@ public class Point
 		define equals using the format here.
 		If you want your instances to be able to print, define toString.
 	 */
-	 
+
 	/* Is o equal to this */
-	public boolean equals (Object o)
-	{
+	public boolean equals (Object o) {
 		if (!(o instanceof Point)) // check that o is a Point!
 			return false;
 		Point p = (Point) o;	// this works if o is a Point.
@@ -53,8 +48,7 @@ public class Point
 	}
 
 	/* return String representation suitable for printing */
-	public String toString()
-	{
+	public String toString() {
 		return "(" + x + ", " + y + ")";
 	}
 }
