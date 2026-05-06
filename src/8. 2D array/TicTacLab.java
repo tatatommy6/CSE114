@@ -16,7 +16,7 @@ public class TicTacLab {
             } else {
                 System.out.println();
             }
-            }
+        }
 
             if (var1 < 2) {
             System.out.println("–––––");

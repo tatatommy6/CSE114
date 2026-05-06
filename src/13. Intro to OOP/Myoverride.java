@@ -3,9 +3,9 @@
  * Last modified by J.Finn: 23-Apr-2026
  */
 
-public class Override extends Overload
+public class Myoverride extends Overload
 {
-   public Override(String initial)
+   public Myoverride(String initial)
    {
       super(initial);
    }
@@ -22,7 +22,7 @@ public class Override extends Overload
 
    public static void main(String[] args)
    {
-      Override test = new Override("Hello");
+      Myoverride test = new Myoverride("Hello");
       test.print();			// calls override Override.print()
       test.print(22);		// calls overloaded Override.print(int)
       test.print("Fun");	// calls Overload.print(String), we did not override it
