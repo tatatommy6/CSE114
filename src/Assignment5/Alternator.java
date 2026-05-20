@@ -7,16 +7,14 @@
 
 public class Alternator extends AsciiArtBase
 {
-	private String desc = 
-		"This art prints two alternating characters on the canvas";
+	private String desc = "This art prints two alternating characters on the canvas";
 	private char c1, c2;
 	
 	/* 
 		rows, cols are the initial rows and columns of the canvas.
 		c1 and c2 are the characters to be used in drawing
 	 */
-	public Alternator(int rows, int cols, char c1, char c2)
-	{
+	public Alternator(int rows, int cols, char c1, char c2) {
 		if (rows >= 1) this.rows = rows;
 		else this.rows = 10;
 		if (cols >= 1) this.cols = cols;
@@ -26,13 +24,12 @@ public class Alternator extends AsciiArtBase
 		this.c2 = c2;
 	}
 
-	 public char [] [] artwork()
-	 {
-	 	char [] [] art = new char[rows][cols];
-	 	for (int i = 0; i < rows; i++)
-	 		for (int j = 0; j < cols; j++)
-	 			if ((i+j) % 2 == 0) art[i][j] = c1;
-	 			else art[i][j] = c2;
-	 	return art;
-	 }
+	public char [] [] artwork() {
+		char [] [] art = new char[rows][cols];
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < cols; j++)
+				if ((i+j) % 2 == 0) art[i][j] = c1;
+				else art[i][j] = c2;
+		return art;
+	}
 };
