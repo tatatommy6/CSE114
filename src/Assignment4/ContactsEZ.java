@@ -15,6 +15,8 @@ public class ContactsEZ extends Contacts{
     public ContactEZ [] lookup(String info) {
         // create a temporary array: the size is the same as the number of contacts.
         ContactEZ [] tempArray = new ContactEZ[this.length()];
+
+        // matchcnt counts how many contacts match the info.
         int matchcnt = 0;
 
         for(int i = 0;i < this.length(); i++){
@@ -29,7 +31,7 @@ public class ContactsEZ extends Contacts{
                 }
             }
         }
-        // if no match, return null
+        // if nothing matchs, return null
         if (matchcnt == 0) return null;
 
         // Create and copy an array with the exact size corresponding 
