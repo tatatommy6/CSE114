@@ -37,6 +37,5 @@ public class ArtDemo
 		cols = s.nextInt();
 		art.setCols(cols);
 		art.draw();
-		s.close();
 	}
 };
