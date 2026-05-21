@@ -25,10 +25,9 @@ public interface AsciiArt
 	
 	/*
 		Sets the number of rows in the canvas
-		Returns: true normally, false if the requested
-		number of rows is inappropriate.
+		throws SizeException if the requested number of rows is inappropriate.
 	 */
-	public boolean setRows(int rows);
+	public void setRows(int rows) throws ArtException;
 	
 	/*
 		Returns the number of columns in the canvas
@@ -37,28 +36,27 @@ public interface AsciiArt
 	
 	/*
 		Sets the number of columns in the canvas.
-		Returns: true normally, false if the requested
-		number of columns is inappropriate.
+		throws SizeException if the requested number of columns is inappropriate.
 	 */
-	public boolean setCols(int cols);
+	public void setCols(int cols) throws ArtException;
 
 	/*
 		Draws the board to standard output on getRows() lines of length getCols().
-		Return true normally, false on error.		
+		throws DrawingException on error.
 	 */
-	public boolean draw();
+	public void draw() throws ArtException;
 	
 	/*
-		Returns a newly-created two-dimensional array of char,
-		which will have getRows() rows and getCols() columns,
-		and which contains the same drawing that would be printed
-		to standard output by calling draw().
-		Arrays are mutable, so this must be a new array, not a
-		reference to any private implementation data structure.
-		In other words, if the client modifies this array, it should
-		not affect the array returned by subsequent calls to artwork()
-		or the art drawn by subsequent calls to draw().
-		Returns null on error.
-	 */
-	 public char [] [] artwork();
+    Returns a newly-created two-dimensional array of char,
+    which will have getRows() rows and getCols() columns,
+    and which contains the same drawing that would be printed
+    to standard output by calling draw().
+    Arrays are mutable, so this must be a new array, not a
+    reference to any private implementation data structure.
+    In other words, if the client modifies this array, it should
+    not affect the array returned by subsequent calls to artwork()
+    or the art drawn by subsequent calls to draw().
+    Throws DrawingException on error.
+	*/
+	public char [] [] artwork() throws ArtException;
 };

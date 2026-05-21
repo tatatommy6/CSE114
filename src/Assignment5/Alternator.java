@@ -24,7 +24,7 @@ public class Alternator extends AsciiArtBase
 		this.c2 = c2;
 	}
 
-	public char [] [] artwork() {
+	public char [] [] artwork() throws ArtException {
 		char [] [] art = new char[rows][cols];
 		for (int i = 0; i < rows; i++)
 			for (int j = 0; j < cols; j++)

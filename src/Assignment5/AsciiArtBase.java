@@ -37,11 +37,10 @@ public abstract class AsciiArtBase implements AsciiArt
 	/*
 		Sets the number of rows in the canvas
 	 */
-	public boolean setRows(int rows)
+	public void setRows(int rows) throws ArtException
 	{
-		if (rows < 1) return false;
+		if (rows < 1) throw new SizeException("Number of rows nust be at least 1");
 		this.rows = rows;
-		return true;
 	}
 	
 	/*
@@ -55,28 +54,31 @@ public abstract class AsciiArtBase implements AsciiArt
 	/*
 		Sets the number of columns in the canvas
 	 */
-	public boolean setCols(int cols)
+	public void setCols(int cols) throws ArtException
 	{
-		if (cols < 1) return false;
+		if (cols < 1) throw new SizeException("Number of columns nust ve at least 1.");
 		this.cols = cols;
-		return true;
 	}
 
 	/*
 		Draws the board to standard output on getRows() lines of length getCols().
 		Return true normally, false on error.		
 	 */
-	public final boolean draw()
+	public final void draw() throws ArtException
 	{
 		char [] [] canvas = artwork();
-		if (canvas == null) return false;
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < cols; j++)
-				System.out.print(canvas[i][j]);
+		if (canvas == null) throw new DrawingException("artwork() returned null");
+		
+		if (canvas.length != rows) throw new DrawingException("artwork() has the wrong number of rows.");
+
+		for(int i=0;i< rows; i++){
+			if(canvas[i] == null || canvas[i].length != cols) throw new DrawingException("artwork() has the wrong number of columns.");
+
+			for(int j = 0; j < cols; j++){
+				System.out.println(canvas[i][j]);
+			}
 			System.out.println();
 		}
-		return true;
 	}
 	
 	/*
@@ -91,5 +93,5 @@ public abstract class AsciiArtBase implements AsciiArt
 		or the art drawn by subsequent calls to draw().
 		Returns null on error.
 	 */
-	 public abstract char [] [] artwork();
+	public abstract char [] [] artwork() throws ArtException;
 };

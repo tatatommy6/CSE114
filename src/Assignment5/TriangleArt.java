@@ -25,14 +25,14 @@ public class TriangleArt extends AsciiArtBase
 		this.c = c;
 	}
 
-	 public char [] [] artwork()
-	 {
-	 	char [] [] art = new char[rows][cols];
-	 	double ratio = (double) rows / cols;
-	 	for (int i = 0; i < rows; i++)
-	 		for (int j = 0; j < cols; j++)
-	 			if (i >= ratio * j) art[i][j] = c;
-	 			else art[i][j] = ' ';
-	 	return art;
-	 }
+	public char [] [] artwork() throws ArtException
+	{
+	char [] [] art = new char[rows][cols];
+	double ratio = (double) rows / cols;
+	for (int i = 0; i < rows; i++)
+		for (int j = 0; j < cols; j++)
+			if (i >= ratio * j) art[i][j] = c;
+			else art[i][j] = ' ';
+	return art;
+	}
 };
