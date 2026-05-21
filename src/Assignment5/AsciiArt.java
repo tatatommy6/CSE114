@@ -1,9 +1,10 @@
+// Minkyeol Kim
 /*
 	AsciiArt.java
-	Last modified by J.Finn: 9-May-2026
+	Last modified by Minkyeol Kim: 21-May-2026
 
 	Interface for ASCII art programs that draw character-based
-	art over any rectangular grid.
+	art over any rectangular grid. (with exception handling)
 	
 	It is expected that the initial number of rows and columns
 	will be AsciiArt constructor arguments, but they are intended
@@ -27,7 +28,7 @@ public interface AsciiArt
 		Sets the number of rows in the canvas
 		throws SizeException if the requested number of rows is inappropriate.
 	 */
-	public void setRows(int rows) throws ArtException;
+	public void setRows(int rows) throws ArtException; // Modified to throw ArtException
 	
 	/*
 		Returns the number of columns in the canvas
@@ -38,13 +39,13 @@ public interface AsciiArt
 		Sets the number of columns in the canvas.
 		throws SizeException if the requested number of columns is inappropriate.
 	 */
-	public void setCols(int cols) throws ArtException;
+	public void setCols(int cols) throws ArtException; // Modified to throw ArtException
 
 	/*
 		Draws the board to standard output on getRows() lines of length getCols().
 		throws DrawingException on error.
 	 */
-	public void draw() throws ArtException;
+	public void draw() throws ArtException; // Modified to throw ArtException
 	
 	/*
     Returns a newly-created two-dimensional array of char,
@@ -58,5 +59,5 @@ public interface AsciiArt
     or the art drawn by subsequent calls to draw().
     Throws DrawingException on error.
 	*/
-	public char [] [] artwork() throws ArtException;
+	public char [] [] artwork() throws ArtException; // Modified to throw ArtException
 };

@@ -1,15 +1,16 @@
+// Minkyeol Kim
 /*
 	AsciiArtBase.java
-	Last modified by J.Finn: 9-May-2026
+	Last modified by Minkyeol Kim: 21-May-2026
 
-	Abstract base class.
+	Abstract base class.(with exception handling)
 	
 	To create an art work:
 	a) create a subclass of ArtBase
 	b) The constructor should initialize rows, cols, and description
 	c) Implement the artwork() function
 	d) If you do not wish to allow all values for rows and cols, you
-	   optionally may override getRows and setRows.
+		optionally may override getRows and setRows.
 */
 
 public abstract class AsciiArtBase implements AsciiArt
@@ -37,7 +38,7 @@ public abstract class AsciiArtBase implements AsciiArt
 	/*
 		Sets the number of rows in the canvas
 	 */
-	public void setRows(int rows) throws ArtException
+	public void setRows(int rows) throws ArtException // Modified to throw ArtException
 	{
 		if (rows < 1) throw new SizeException("Number of rows nust be at least 1");
 		this.rows = rows;
@@ -54,7 +55,7 @@ public abstract class AsciiArtBase implements AsciiArt
 	/*
 		Sets the number of columns in the canvas
 	 */
-	public void setCols(int cols) throws ArtException
+	public void setCols(int cols) throws ArtException // Modified to throw ArtException
 	{
 		if (cols < 1) throw new SizeException("Number of columns nust ve at least 1.");
 		this.cols = cols;
@@ -64,18 +65,21 @@ public abstract class AsciiArtBase implements AsciiArt
 		Draws the board to standard output on getRows() lines of length getCols().
 		Return true normally, false on error.		
 	 */
-	public final void draw() throws ArtException
-	{
+	public final void draw() throws ArtException{ // Modified to throw ArtException
 		char [] [] canvas = artwork();
-		if (canvas == null) throw new DrawingException("artwork() returned null");
+
+		if (canvas == null)
+			throw new DrawingException("artwork() returned null");
 		
-		if (canvas.length != rows) throw new DrawingException("artwork() has the wrong number of rows.");
+		if (canvas.length != rows)
+			throw new DrawingException("artwork() has the wrong number of rows.");
 
-		for(int i=0;i< rows; i++){
-			if(canvas[i] == null || canvas[i].length != cols) throw new DrawingException("artwork() has the wrong number of columns.");
+		for(int i = 0; i < rows; i++) {
+			if(canvas[i] == null || canvas[i].length != cols)
+				throw new DrawingException("artwork() has the wrong number of columns.");
 
-			for(int j = 0; j < cols; j++){
-				System.out.println(canvas[i][j]);
+			for(int j = 0; j < cols; j++) {
+				System.out.print(canvas[i][j]);
 			}
 			System.out.println();
 		}
@@ -93,5 +97,5 @@ public abstract class AsciiArtBase implements AsciiArt
 		or the art drawn by subsequent calls to draw().
 		Returns null on error.
 	 */
-	public abstract char [] [] artwork() throws ArtException;
+	public abstract char [] [] artwork() throws ArtException; // Modified to throw ArtException
 };

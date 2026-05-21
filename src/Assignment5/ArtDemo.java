@@ -1,7 +1,8 @@
+// Minkyeol Kim
 /*
 	ArtDemo.java
-	Last modified by J.Finn: 9-May-2026
-	Demo art works
+	Last modified by Minkyeol Kim: 21-May-2026
+	Demo art works(with exception handling)
 */
 
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class ArtDemo
 	public static void main(String args[]) {
 		final int DEFAULT = 10;	// default rows, cols
 		Scanner s = new Scanner(System.in);
-		try{
+		try{ // changed to try-catch block to catch ArtExceptions that may. be thrown by the art works.
 			AsciiArt art = new TriangleArt(DEFAULT, DEFAULT, '*');
 			art.describe();
 			System.out.println("Drawing on " + DEFAULT + "X" + DEFAULT + " canvas ");
@@ -49,8 +50,6 @@ public class ArtDemo
 		{
 			System.out.println("Art Error: " + e.getMessage());
 		}
-		finally{
-			s.close();
-		}
+		s.close();
 	}
 };

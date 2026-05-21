@@ -26,6 +26,7 @@ public class Quotient
 		}
 		
 		System.out.println("We DID NOT CRASH. Goodbye");
+		input.close();
    }
 }
 

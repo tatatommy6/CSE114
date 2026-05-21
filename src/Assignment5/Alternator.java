@@ -1,8 +1,9 @@
+// Minkyeol Kim
 /*
 	Alternator.java
-	Last modified by J.Finn: 9-May-2026
+	Last modified by minkyeol kim: 21-May-2026
 
-	Art that prints alternating characters.
+	Art that prints alternating characters.(with exception handling)
 */
 
 public class Alternator extends AsciiArtBase
@@ -24,7 +25,7 @@ public class Alternator extends AsciiArtBase
 		this.c2 = c2;
 	}
 
-	public char [] [] artwork() throws ArtException {
+	public char [] [] artwork() throws ArtException { // Modified to throw ArtException
 		char [] [] art = new char[rows][cols];
 		for (int i = 0; i < rows; i++)
 			for (int j = 0; j < cols; j++)

@@ -1,14 +1,14 @@
+// Minkyeol Kim
 /*
 	TriangleArt.java
-	Last modified by J.Finn: 9-May-2026
+	Last modified by Minkyeol Kim: 21-May-2026
 
 	Art that prints a triangle on the canvas that fills half the canvas
 */
 
 public class TriangleArt extends AsciiArtBase
 {
-	private String desc = 
-		"This art prints a triangle that fills the lower-left half of the canvas";
+	private String desc = "This art prints a triangle that fills the lower-left half of the canvas";
 	private char c;
 	
 	/* 
@@ -25,7 +25,7 @@ public class TriangleArt extends AsciiArtBase
 		this.c = c;
 	}
 
-	public char [] [] artwork() throws ArtException
+	public char [] [] artwork() throws ArtException // changed to throw ArtException if rows or cols are invalid
 	{
 	char [] [] art = new char[rows][cols];
 	double ratio = (double) rows / cols;
