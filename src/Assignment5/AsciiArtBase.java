@@ -40,7 +40,7 @@ public abstract class AsciiArtBase implements AsciiArt
 	 */
 	public void setRows(int rows) throws ArtException // Modified to throw ArtException
 	{
-		if (rows < 1) throw new SizeException("Number of rows nust be at least 1");
+		if (rows < 1) throw new SizeException("Number of rows must be at least 1");
 		this.rows = rows;
 	}
 	
@@ -57,13 +57,13 @@ public abstract class AsciiArtBase implements AsciiArt
 	 */
 	public void setCols(int cols) throws ArtException // Modified to throw ArtException
 	{
-		if (cols < 1) throw new SizeException("Number of columns nust ve at least 1.");
+		if (cols < 1) throw new SizeException("Number of columns must ve at least 1.");
 		this.cols = cols;
 	}
 
 	/*
 		Draws the board to standard output on getRows() lines of length getCols().
-		Return true normally, false on error.		
+		Throws DrawingException if artwork() returns null or has incorrect dimensions.
 	 */
 	public final void draw() throws ArtException{ // Modified to throw ArtException
 		char [] [] canvas = artwork();
