@@ -1,0 +1,25 @@
+James
+Finn
+email
+james.finn@sunykorea.ac.kr
+address
+Computer Science Dept, SUNY Korea
+*****
+Noam
+Chomsky
+*****
+Patrick
+Stickles
+phone
+(718) 555-1212
+address
+Brooklyn, NY
+*****
+Tony
+Rice
+address
+Guitar Heaven
+*****
+Cameron
+Winter
+*****
