@@ -1,29 +1,29 @@
-/*
- 	Contacts.java
- 	Last modified by J.Finn: 10-May-2026
- 	Class represents contacts database
- 	Can now save to file and read file
- 	File format
- 		for each contact, each item is one line:
- 			name
- 			surname
- 		if email exists:
- 			"email"
- 			email
- 		if phone exists:
- 			"phone"
- 			phone
- 		if address exists:
- 			"address"
- 			address
- 		to mark end of contact:
- 			*****
- 	Other changes:
- 		add checks for duplicates, replaces old entry instead of adding dup
- 		added iLookup, delete methods
- 		added Constructor that takes filename and loads file if it exists,
- 			save will save to that file.
- */
+	/*
+	Contacts.java
+	Last modified by J.Finn: 10-May-2026
+	Class represents contacts database
+	Can now save to file and read file
+	File format
+		for each contact, each item is one line:
+			name
+			surname
+		if email exists:
+			"email"
+			email
+		if phone exists:
+			"phone"
+			phone
+		if address exists:
+			"address"
+			address
+		to mark end of contact:
+			*****
+	Other changes:
+		add checks for duplicates, replaces old entry instead of adding dup
+		added iLookup, delete methods
+		added Constructor that takes filename and loads file if it exists,
+			save will save to that file.
+	*/
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -60,7 +60,7 @@ public class Contacts
 		Read the file into the contacts array.
 		Return: true on succcess, false on error
 	 */
-	private boolean readData(BufferedReader in)
+	private boolean readOldData(BufferedReader in, String firstName)
 	{
 		Contact c;
 		String name;
@@ -68,15 +68,19 @@ public class Contacts
 		String s;
 		try
 		{
-			for(;;)
+			name = firstName;
+
+			for(;;) // loop through records
 			{
-				name = in.readLine();
 				if (name == null) break;	// no more records
+
 				surname = in.readLine();
 				c = new Contact(name, surname);
+
 				for(;;)
 				{
 					s = in.readLine();
+
 					if (s.equals("email"))
 					{
 						s = in.readLine();
@@ -101,6 +105,7 @@ public class Contacts
 					else break;
 				}
 				contacts[length++] = c;
+				name = in.readLine();
 			}
 			in.close();
 			return true;
@@ -108,6 +113,60 @@ public class Contacts
 		catch (IOException e)
 		{
 			System.err.println("I/O error: " + e.getMessage());
+			return false;
+		}
+	}
+
+	private boolean readNewData(BufferedReader in){
+		Contact c;
+		String name;
+		String surname;
+		String s;
+		int fields;
+
+		try{
+			for(;;){
+				s = in.readLine();
+				if(s == null) break;
+
+				fields = Integer.parseInt(s);
+
+				name = in.readLine();
+				surname = in.readLine();
+				c = new Contact(name, surname);
+
+				for(int i = 2; i < fields; i++){
+					s = in.readLine();
+
+					if(s.equals("email")){
+						s = in.readLine();
+						c.setEmail(s);
+					}
+					else if(s.equals("phone")){
+						s = in.readLine();
+						c.setPhone(s);
+					}
+					else if(s.equals("address")){
+						s = in.readLine();
+						c.setAddress(s);
+					}
+					else{
+						System.err.println("Error: file corrupt. Bad line: " + s);
+						in.close();
+						return false;
+					}
+				}
+				contacts[length++] = c;
+			}
+			in.close();
+			return true;
+		}
+		catch(IOException e){
+			System.err.println("I/O error: " + e.getMessage());
+			return false;
+		}
+		catch(NumberFormatException e){
+			System.err.println("error: file corrupt. Bad field count.");
 			return false;
 		}
 	}
@@ -135,7 +194,25 @@ public class Contacts
 		{
 			return false;
 		}
-		return readData(in);
+
+		// check the first line to determine file format, then call appropriate read method.
+		try {
+			String firstLine = in.readLine();
+
+			if (firstLine == null) {
+				in.close();
+				return true;
+			}
+
+			if (firstLine.equals("# v2.0"))
+				return readNewData(in);
+			else
+				return readOldData(in, firstLine);
+		}
+		catch (IOException e) {
+			System.err.println("I/O error: " + e.getMessage());
+			return false;
+		}
 	}
 	
 	/*
@@ -147,14 +224,27 @@ public class Contacts
 		PrintWriter out;
 		int i;
 		Contact c;
+		int fields;
 		try
 		{
 			out = new PrintWriter(new BufferedWriter(new FileWriter(fname)));
+			// first line of every v2.0 file.
+			out.println("# v2.0");
+
 			for (i = 0; i < length; i++)
 			{
 				c = contacts[i];
+
+				// every contact has name and surname, so start with 2 fields.
+				fields = 2;
+				if (c.getEmail() != null) fields++;
+				if (c.getPhone() != null) fields++;
+				if (c.getAddress() != null) fields++;
+
+				out.println(fields);
 				out.println(c.getName());
 				out.println(c.getSurname());
+
 				if (c.getEmail() != null)
 				{
 					out.println("email");
@@ -170,7 +260,6 @@ public class Contacts
 					out.println("address");
 					out.println(c.getAddress());
 				}
-				out.println(SEPARATOR);
 			}
 			out.close();
 		}
