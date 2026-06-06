@@ -1,6 +1,6 @@
 	/*
 	Contacts.java
-	Last modified by J.Finn: 10-May-2026
+	Last modified by Minkyeol kim 2026-06-03
 	Class represents contacts database
 	Can now save to file and read file
 	File format

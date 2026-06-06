@@ -1,6 +1,6 @@
 /*
  * UseContacts.java
- * Last modified by J.Finn: 10-May-2026
+ * Last modified by Minkyeol Kim 2026-06-05
  */
 
 public class UseContacts
@@ -8,7 +8,7 @@ public class UseContacts
 	public static void main(String args[])
 	{
 		// data to initialize contacts
-		Contacts c = new Contacts("src/Assignment 6/JFContacts.txt");
+		Contacts c = new Contacts("JFContacts.txt");
 		System.out.println("Contacts loaded from file: ");
 
 		for(int i = 0; i < c.length(); i++){
@@ -21,7 +21,7 @@ public class UseContacts
 		else
 			System.out.println("Save failed\n");
 
-		Contacts c2 = new Contacts("src/Assignment 6/JFContacts.txt");
+		Contacts c2 = new Contacts("JFContacts.txt");
 
 		System.out.println("Contacts loaded again from v2.0 file:");
 		for(int i = 0; i < c2.length(); i++){
